@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.abxoverflow.droppedapk'
+    compileSdk 33
+
+    signingConfigs {
+        sdkLibrarySigningConfig {
+            storeFile(file("abxdroppedapk.keystore"))
+            storePassword("abxdroppedapk")
+            keyAlias("abxdroppedapk")
+            keyPassword("abxdroppedapk")
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.example.abxoverflow.droppedapk"
+        minSdk 31
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sdkLibrarySigningConfig
+        }
+        debug {
+            signingConfig signingConfigs.sdkLibrarySigningConfig
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+}

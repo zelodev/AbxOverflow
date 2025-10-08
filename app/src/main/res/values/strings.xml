@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">AbxOverflow</string>
+    <string name="intro">
+        This is PoC for tampering with
+        \n<tt>/data/system/install_sessions.xml</tt>
+        \nthrough integer overflow in
+        \n<tt>BinaryXmlSerializer.attributeBytesBase64()</tt>,
+        \nfollowed by modification of
+        \n<tt>/data/system/packages.xml</tt>
+        \nin order to allow installation of apk with
+        \n<tt>android:sharedUserId="android.uid.system"</tt>
+        \ndespite mismatching signature
+
+        \n\nPress \"Do everything\" to do all steps automatically,
+        this will involve two system restarts
+
+        \n\nAlternatively, do following manually:
+        \n1. In this app press \"Stage 1\"
+        \n2. Once that is done, press \"Reboot\" to restart <tt>system_server</tt> (in order to reload its state)
+        \n3. Open this app (AbxOverflow) again this app press \"Stage 2\"
+        \n4. Press \"Reboot\" again
+        \n5. Open newly installed \"AbxDroppedApk\" application
+    </string>
+    <string name="do_everything">Do everything</string>
+    <string name="stage_1">Stage 1</string>
+    <string name="stage_2">Stage 2</string>
+    <string name="reboot">Reboot</string>
+    <string name="done_toast">Done</string>
+</resources>

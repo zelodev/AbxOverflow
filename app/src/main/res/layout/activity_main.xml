@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_everything"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/intro" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button_everything"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="doEverything"
+        android:text="@string/do_everything"
+        app:layout_constraintBottom_toTopOf="@+id/button_stage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/button_stage1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="doStage1"
+        android:text="@string/stage_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_stage2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_stage2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="doStage2"
+        android:text="@string/stage_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_crash"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_stage1" />
+
+    <Button
+        android:id="@+id/button_crash"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="doCrash"
+        android:text="@string/reboot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_stage2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

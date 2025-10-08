@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<sessions>
+  <session sessionId="1545508820" userId="0" installerPackageName="com.example.abxoverflow" installerPackageUid="10134" updateOwnererPackageName="com.example.abxoverflow" installerUid="10134" installInitiatingPackageName="com.example.abxoverflow" createdMillis="1697602440686" updatedMillis="1697602440686" committedMillis="0" sessionStageDir="/data/app/vmdl1545508820.tmp" prepared="true" committed="false" destroyed="false" sealed="false" multiPackage="false" stagedSession="false" isReady="false" isFailed="false" isApplied="false" packageSource="0" errorCode="0" errorMessage="" parentSessionId="-1" mode="1" installFlags="5242898" installLocation="1" sizeBytes="-1" originatingUid="-1" installRason="0" applicationEnabledSettingPersistent="false" isDataLoader="false">
+    <auto-revoke-permissions-mode mode="3" />
+  </session>
+</sessions>
