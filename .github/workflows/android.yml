@@ -21,3 +21,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Upload release
+      uses: actions/upload-artifact@v4
+      with:
+        path: "app/build/outputs"
