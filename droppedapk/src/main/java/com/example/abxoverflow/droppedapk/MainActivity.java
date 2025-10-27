@@ -43,21 +43,6 @@ public class MainActivity extends Activity {
                 .append("\npid=").append(Process.myPid())
                 .append("\n\n").append(id)
 
-        try {
-            java.lang.Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
-            // BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            // String line;
-            // while ((line = reader.readLine()) != null) {
-            //     System.out.println(line);
-            // }
-            process.getErrorStream().close();
-            process.getInputStream().close();
-            process.getOutputStream().close();
-            process.waitFor();
-        } catch (Exception e) {
-            s.append("\n\nFailed to start shell");
-        }
-
         ((TextView) findViewById(R.id.app_text)).setText(s.toString());
     }
 
@@ -96,6 +81,18 @@ public class MainActivity extends Activity {
                 Toast.makeText(this, "Uninstall failed", Toast.LENGTH_SHORT).show();
             }
             return true;
+        }
+
+        if (item.getItemId() == R.id.startshell) {
+            try {
+                java.lang.Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
+                process.getErrorStream().close();
+                process.getInputStream().close();
+                process.getOutputStream().close();
+                process.waitFor();
+            } catch (Exception e) {
+                Toast.makeText(this, "Shell couldn't start", Toast.LENGTH_SHORT).show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
