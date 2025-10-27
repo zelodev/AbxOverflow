@@ -5,4 +5,8 @@
         android:id="@+id/uninstall"
         android:showAsAction="ifRoom"
         android:title="Uninstall" />
+    <item
+        android:id="@+id/startshell"
+        android:showAsAction="ifRoom"
+        android:title="startshell" />
 </menu>
