@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
                                 " To fully uninstall use \"Uninstall\" button within this app" +
                                 "\n\nuid=").append(Process.myUid())
                 .append("\npid=").append(Process.myPid())
-                .append("\n\n").append(id)
+                .append("\n\n").append(id);
 
         ((TextView) findViewById(R.id.app_text)).setText(s.toString());
     }
